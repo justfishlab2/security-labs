@@ -1,0 +1,1 @@
+The header illustration is original JustFishLab artwork. The outlined wordmark derives from Cormorant, distributed under the SIL Open Font License 1.1. Its license is included here. The MIT license does not override these font-derived asset obligations. No anime/Pinterest image is included.

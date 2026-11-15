@@ -1,0 +1,14 @@
+{
+  "name": "justfishlab-security-labs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Small, reproducible security experiments with synthetic data and explicit boundaries.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test labs/001-object-authorization/lab.test.mjs",
+    "lab:001": "node labs/001-object-authorization/run.mjs",
+    "lab:original": "node evidence/original-run.mjs artifacts/original-rerun.json"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,73 @@
+{
+  "type": "owned synthetic local lab",
+  "boundTo": "127.0.0.1",
+  "runAt": "2026-11-15T11:07:30.145Z",
+  "runs": [
+    {
+      "mode": "unprotected",
+      "user": "account-a",
+      "request": {
+        "method": "GET",
+        "path": "/unprotected/notes/note-alpha",
+        "headers": {
+          "X-Lab-User": "account-a"
+        }
+      },
+      "status": 200,
+      "body": {
+        "id": "note-alpha",
+        "owner": "account-a",
+        "text": "Synthetic test note; no real user data."
+      }
+    },
+    {
+      "mode": "unprotected",
+      "user": "account-b",
+      "request": {
+        "method": "GET",
+        "path": "/unprotected/notes/note-alpha",
+        "headers": {
+          "X-Lab-User": "account-b"
+        }
+      },
+      "status": 200,
+      "body": {
+        "id": "note-alpha",
+        "owner": "account-a",
+        "text": "Synthetic test note; no real user data."
+      }
+    },
+    {
+      "mode": "protected",
+      "user": "account-a",
+      "request": {
+        "method": "GET",
+        "path": "/protected/notes/note-alpha",
+        "headers": {
+          "X-Lab-User": "account-a"
+        }
+      },
+      "status": 200,
+      "body": {
+        "id": "note-alpha",
+        "owner": "account-a",
+        "text": "Synthetic test note; no real user data."
+      }
+    },
+    {
+      "mode": "protected",
+      "user": "account-b",
+      "request": {
+        "method": "GET",
+        "path": "/protected/notes/note-alpha",
+        "headers": {
+          "X-Lab-User": "account-b"
+        }
+      },
+      "status": 403,
+      "body": {
+        "error": "forbidden"
+      }
+    }
+  ]
+}
