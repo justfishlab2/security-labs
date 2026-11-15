@@ -1,0 +1,144 @@
+{
+  "type": "owned synthetic local labs",
+  "boundTo": "127.0.0.1",
+  "runAt": "2026-11-15T12:22:05.184Z",
+  "runs": [
+    {
+      "lab": "tenant",
+      "actor": "account-a",
+      "mode": "unprotected",
+      "request": {
+        "method": "GET",
+        "path": "/tenant/unprotected/projects/record-a",
+        "headers": {
+          "X-Lab-User": "account-a"
+        }
+      },
+      "status": 200,
+      "body": {
+        "id": "record-a",
+        "tenant": "tenant-a",
+        "text": "Synthetic tenant-a project"
+      }
+    },
+    {
+      "lab": "tenant",
+      "actor": "account-b",
+      "mode": "unprotected",
+      "request": {
+        "method": "GET",
+        "path": "/tenant/unprotected/projects/record-a",
+        "headers": {
+          "X-Lab-User": "account-b"
+        }
+      },
+      "status": 200,
+      "body": {
+        "id": "record-a",
+        "tenant": "tenant-a",
+        "text": "Synthetic tenant-a project"
+      }
+    },
+    {
+      "lab": "tenant",
+      "actor": "account-a",
+      "mode": "protected",
+      "request": {
+        "method": "GET",
+        "path": "/tenant/protected/projects/record-a",
+        "headers": {
+          "X-Lab-User": "account-a"
+        }
+      },
+      "status": 200,
+      "body": {
+        "id": "record-a",
+        "tenant": "tenant-a",
+        "text": "Synthetic tenant-a project"
+      }
+    },
+    {
+      "lab": "tenant",
+      "actor": "account-b",
+      "mode": "protected",
+      "request": {
+        "method": "GET",
+        "path": "/tenant/protected/projects/record-a",
+        "headers": {
+          "X-Lab-User": "account-b"
+        }
+      },
+      "status": 403,
+      "body": {
+        "error": "forbidden"
+      }
+    },
+    {
+      "lab": "role",
+      "actor": "account-a",
+      "mode": "unprotected",
+      "request": {
+        "method": "GET",
+        "path": "/role/unprotected/reports/export",
+        "headers": {
+          "X-Lab-User": "account-a"
+        }
+      },
+      "status": 200,
+      "body": {
+        "report": "Synthetic export",
+        "tenant": "tenant-a"
+      }
+    },
+    {
+      "lab": "role",
+      "actor": "account-admin",
+      "mode": "unprotected",
+      "request": {
+        "method": "GET",
+        "path": "/role/unprotected/reports/export",
+        "headers": {
+          "X-Lab-User": "account-admin"
+        }
+      },
+      "status": 200,
+      "body": {
+        "report": "Synthetic export",
+        "tenant": "tenant-a"
+      }
+    },
+    {
+      "lab": "role",
+      "actor": "account-a",
+      "mode": "protected",
+      "request": {
+        "method": "GET",
+        "path": "/role/protected/reports/export",
+        "headers": {
+          "X-Lab-User": "account-a"
+        }
+      },
+      "status": 403,
+      "body": {
+        "error": "forbidden"
+      }
+    },
+    {
+      "lab": "role",
+      "actor": "account-admin",
+      "mode": "protected",
+      "request": {
+        "method": "GET",
+        "path": "/role/protected/reports/export",
+        "headers": {
+          "X-Lab-User": "account-admin"
+        }
+      },
+      "status": 200,
+      "body": {
+        "report": "Synthetic export",
+        "tenant": "tenant-a"
+      }
+    }
+  ]
+}

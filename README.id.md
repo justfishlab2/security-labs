@@ -17,6 +17,7 @@ git clone https://github.com/justfishlab2/security-labs.git
 cd security-labs
 npm test
 npm run lab:001
+npm run lab:policies
 ```
 
 Tidak perlu `npm install`. Server sementara hanya mendengarkan di `127.0.0.1` pada port acak, menjalankan empat request, menulis `artifacts/lab-001.json`, lalu berhenti.
@@ -34,7 +35,7 @@ Satu catatan sintetis dimiliki `account-a`. Dua identitas simulasi diakui oleh l
 
 **`X-Lab-User` adalah header simulasi, bukan autentikasi.** Klien bisa mengubahnya. Karena itu endpoint protected tetap bukan API aman siap produksi. Aplikasi nyata perlu memperoleh identitas dari sesi/token terverifikasi dan menerapkan aturan pemilik, tenant, serta peran.
 
-Sepuluh tes memeriksa empat kombinasi utama, tidak dikembalikannya isi catatan saat dilarang, identitas kosong/tidak dikenal, objek/rute tidak ada, metode tidak didukung, dan binding loopback. CI menjalankan tes pada Node 22 dan 24.
+Sepuluh tes lab pertama memeriksa empat kombinasi utama, tidak dikembalikannya isi catatan saat dilarang, identitas kosong/tidak dikenal, objek/rute tidak ada, metode tidak didukung, dan binding loopback. CI menjalankan tes pada Node 22 dan 24.
 
 ## Asal bukti
 
@@ -62,8 +63,8 @@ Jangan mengirim secret, data privat, atau kerentanan yang belum diizinkan ke iss
 
 - [x] Publikasi eksperimen kepemilikan objek dan bukti sintetis.
 - [x] Versi lab yang dapat dijalankan dan tes otomatis.
-- [ ] Matriks otorisasi dua tenant.
-- [ ] Perbandingan berbasis peran.
+- [x] Matriks otorisasi dua tenant.
+- [x] Perbandingan berbasis peran.
 - [ ] Studi kasus berikutnya setelah diuji dan didokumentasikan.
 
 ## Lisensi dan referensi
@@ -71,3 +72,10 @@ Jangan mengirim secret, data privat, atau kerentanan yang belum diizinkan ke iss
 Kode dan dokumentasi orisinal: [MIT](LICENSE). Wordmark turunan font mengikuti [SIL OFL](assets/Cormorant-OFL.txt); lihat [kredit aset](assets/NOTICE.md).
 
 Referensi: [OWASP BOLA](https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/) · [Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+
+## Lab tambahan
+
+- [002 / Isolasi tenant](labs/002-tenant-isolation/): tenant B tidak boleh membaca proyek tenant A.
+- [003 / Otorisasi peran](labs/003-role-authorization/): member tidak boleh memanggil fungsi ekspor admin.
+
+Keduanya dijalankan di loopback VPS dengan data sintetis. Bukti: `evidence/policy-vps.json`. Total suite sekarang 24 tes. Identitas header tetap simulasi yang bisa diganti klien; bukan autentikasi produksi.

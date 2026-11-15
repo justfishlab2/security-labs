@@ -20,6 +20,8 @@ This is a learning and documentation repository—not a collection of real-targe
 | Lab | Question | Implementation | Case study |
 | :--- | :--- | :--- | :--- |
 | **001 · Object authorization** | Can account B read account A’s note after a successful identity check? | [Code & tests](labs/001-object-authorization/) | [Read the journal](https://justfishlab.my.id/notes/access-control-lab) |
+| **002 · Tenant isolation** | Can tenant B read tenant A’s project? | [Code & policy](labs/002-tenant-isolation/) | [Read the journal](https://justfishlab.my.id/notes/tenant-isolation) |
+| **003 · Role authorization** | Can a member call an admin export function? | [Code & policy](labs/003-role-authorization/) | [Read the journal](https://justfishlab.my.id/notes/role-authorization) |
 
 ## Quick start
 
@@ -30,6 +32,7 @@ git clone https://github.com/justfishlab2/security-labs.git
 cd security-labs
 npm test
 npm run lab:001
+npm run lab:policies
 ```
 
 `npm install` is not required. The lab starts a temporary HTTP server on `127.0.0.1` with an OS-assigned port, makes four local requests, writes a result file, and shuts down.
@@ -39,6 +42,10 @@ Generated output: `artifacts/lab-001.json` (ignored by Git). To choose another o
 ```sh
 node labs/001-object-authorization/run.mjs artifacts/my-run.json
 ```
+
+## Labs 002 & 003 / Tenant and role boundaries
+
+`npm run lab:policies` executes both new experiments using the shared loopback fixture. See the per-lab READMEs above for identity mappings, expected outcomes, and limitations. The complete suite currently contains **24 tests** across all three labs; the original VPS policy capture is `evidence/policy-vps.json`.
 
 ## Lab 001 / The ownership boundary
 
@@ -138,8 +145,8 @@ SECURITY.md                      Safety scope and reporting guidance
 
 - [x] Publish the original ownership-check experiment and synthetic evidence.
 - [x] Add a runnable teaching version and automated regression tests.
-- [ ] Extend the fixture with a two-tenant authorization matrix.
-- [ ] Add a role-based comparison with explicit expected permissions.
+- [x] Extend the fixture with a two-tenant authorization matrix.
+- [x] Add a role-based comparison with explicit expected permissions.
 - [ ] Publish the next case study only after its behavior is tested and documented.
 
 ## Contributing

@@ -35,3 +35,5 @@ jobs:
         run: npm test
       - name: Run the synthetic experiment
         run: npm run lab:001
+      - name: Run tenant and role experiments
+        run: npm run lab:policies
